@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Project1
 {
@@ -10,6 +11,9 @@ namespace Project1
         private SpriteBatch _spriteBatch;
         Texture2D circletexture;
         Texture2D squaretexture;
+        private SpriteFont titlefont;
+
+        public SpriteFont SpriteFont { get; private set; }
 
         public Game1()
         {
@@ -24,6 +28,7 @@ namespace Project1
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            
         }
 
         protected override void LoadContent()
@@ -33,6 +38,8 @@ namespace Project1
             // TODO: use this.Content to load your game content here
             circletexture = Content.Load<Texture2D>("circle");
             squaretexture = Content.Load<Texture2D>("square");
+            titlefont = Content.Load<SpriteFont>("title");
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -57,6 +64,7 @@ namespace Project1
             _spriteBatch.Draw(circletexture, new Rectangle(200, 200, 50, 75), Color.Black);
             _spriteBatch.Draw(circletexture, new Rectangle(350, 200, 50, 75), Color.Black);
             _spriteBatch.Draw(squaretexture, new Rectangle(225, 350, 150, 25), Color.Black);
+            _spriteBatch.DrawString(titlefont, "wazap", new Vector2(225, 350), Color.White);
 
 
             _spriteBatch.End();
